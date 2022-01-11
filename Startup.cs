@@ -30,7 +30,7 @@ namespace FilmesApi
         {
             var dbString = Configuration.GetConnectionString("FilmesDb");
             var serverVersion = new MySqlServerVersion(new Version(5, 7, 36));
-            services.AddDbContext<FilmeContext>(opts => opts.UseMySql(dbString, serverVersion));
+            services.AddDbContext<AppDbContext>(opts => opts.UseMySql(dbString, serverVersion));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

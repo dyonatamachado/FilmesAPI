@@ -14,10 +14,10 @@ namespace FilmesApi.Controllers
     [Route("[controller]")]
     public class FilmeController : ControllerBase
     {
-        private FilmeContext _context;
+        private AppDbContext _context;
         private IMapper _mapper;
 
-        public FilmeController(FilmeContext context, IMapper mapper)
+        public FilmeController(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -76,6 +76,19 @@ namespace FilmesApi.Controllers
             return NoContent();
         }
 
+        [HttpPatch("{id}")] 
+        public IActionResult UpdateCartaz(int id, [FromBody] UpdateCartazDTO cartazDto)
+        {
+            var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
+
+            if(filme == null)
+                return NotFound();
+
+            _mapper.Map(cartazDto, filme);
+            _context.SaveChanges();
+            return NoContent();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteFilme(int id)
         {
@@ -90,17 +103,5 @@ namespace FilmesApi.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{id}")] 
-        public IActionResult UpdateCartaz(int id, [FromBody] UpdateCartazDTO cartazDto)
-        {
-            var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-
-            if(filme == null)
-                return NotFound();
-
-            _mapper.Map(cartazDto, filme);
-            _context.SaveChanges();
-            return NoContent();
-        }
     }
 }
