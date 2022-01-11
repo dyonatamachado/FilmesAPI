@@ -41,7 +41,7 @@ namespace FilmesApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult ReadFilmesById(int id)
+        public IActionResult ReadFilmeById(int id)
         {
             var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
 
@@ -60,7 +60,7 @@ namespace FilmesApi.Controllers
             _context.Add(filme);
             _context.SaveChanges();
 
-            return CreatedAtAction(nameof(ReadFilmesById), new { Id = filme.Id } , filme);
+            return CreatedAtAction(nameof(ReadFilmeById), new { Id = filme.Id } , filme);
         }
 
         [HttpPut("{id}")]
