@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace FilmesApi.Entities
 {
@@ -12,7 +14,9 @@ namespace FilmesApi.Entities
         public string Genero { get; private set; }  
         public int Duracao { get; private set; }
         public int Ano { get; private set; }
-
+        public int ClassificacaoEtaria { get; set; }
+        [JsonIgnore]
+        public virtual List<Sessao> Sessoes { get; set; }
         [Required]
         public byte[] Cartaz { get; private set; }
     }

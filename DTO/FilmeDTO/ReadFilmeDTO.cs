@@ -9,5 +9,7 @@ namespace FilmesApi.DTO.FilmeDTO
         public int Duracao { get; private set; }
         public int Ano { get; private set; }
         public string CartazBase64 { get; private set; }
+        public int ClassificacaoEtaria { get; private set; }
+
     }
 }

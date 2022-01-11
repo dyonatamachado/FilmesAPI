@@ -18,6 +18,8 @@ namespace FilmesApi.DTO.FilmeDTO
         [Required(ErrorMessage = "O campo Ano é obrigatório")]
         [Range(1900,2100, ErrorMessage = "O Ano deve variar entre 1900 e 2100.")]
         public int Ano { get; set; }
+        [Required(ErrorMessage = "Campo Classificação Etária é obrigatório")]
+        public int ClassificacaoEtaria { get; set; }
         private string _cartazBase64;
 
         [Required(ErrorMessage = "O campo CartazBase64 é obrigatório e aceita strings no formato Base64")]

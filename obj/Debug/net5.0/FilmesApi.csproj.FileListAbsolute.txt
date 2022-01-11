@@ -37,3 +37,5 @@ C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\obj\Debug\net5.0\Filmes
 C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\obj\Debug\net5.0\FilmesApi.genruntimeconfig.cache
 C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Humanizer.dll
 C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
