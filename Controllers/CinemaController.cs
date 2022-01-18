@@ -27,7 +27,7 @@ namespace FilmesApi.Controllers
             var cinemas = _context.Cinemas.ToList();
             var cinemasDto = new List<ReadCinemaDTO>();
 
-            if(cinemas == null)
+            if(cinemas.Count == 0)
                 return NoContent();
             
             foreach (var cinema in cinemas)
