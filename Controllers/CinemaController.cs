@@ -22,19 +22,24 @@ namespace FilmesApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult ReadCinemas()
+        public IActionResult ReadCinemas([FromQuery] string nomeDoFilme)
         {
             var cinemas = _context.Cinemas.ToList();
-            var cinemasDto = new List<ReadCinemaDTO>();
+            
+            if(!string.IsNullOrEmpty(nomeDoFilme))
+            {
+                var data = from cinema in cinemas
+                    where cinema.Sessoes.Any
+                    (sessao => sessao.Filme.Titulo == nomeDoFilme)
+                    select cinema;
+                
+                cinemas = data.ToList();
+            }
 
             if(cinemas.Count == 0)
                 return NoContent();
             
-            foreach (var cinema in cinemas)
-            {
-                var cinemaDto = _mapper.Map<ReadCinemaDTO>(cinema);
-                cinemasDto.Add(cinemaDto);
-            }
+            var cinemasDto = _mapper.Map<List<ReadCinemaDTO>>(cinemas);
 
             return Ok(cinemasDto);
         }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace FilmesApi.Entities
 {
@@ -13,6 +14,7 @@ namespace FilmesApi.Entities
         public int EnderecoId { get; private set; }
         public virtual Gerente Gerente { get; private set; }
         public virtual Endereco Endereco { get; private set; }
+        [JsonIgnore]
         public virtual List<Sessao> Sessoes { get; private set; }
     }
 }

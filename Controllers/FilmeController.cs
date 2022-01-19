@@ -24,19 +24,25 @@ namespace FilmesApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult ReadFilmes()
+        public IActionResult ReadFilmes([FromQuery] int? classificacaoEtaria = null)
         {
-            var filmes = _context.Filmes.ToList();
-            var filmesDto = new List<ReadFilmeDTO>();
+            List<Filme> filmes;
+
+            if(classificacaoEtaria == null)
+            {
+                filmes = _context.Filmes.ToList();
+            }
+            else
+            {
+                filmes = _context.Filmes.
+                    Where(filme => filme.ClassificacaoEtaria <= classificacaoEtaria).ToList();
+            }
 
             if(filmes == null)
                 return NoContent();
             
-            foreach (var filme in filmes)
-            {
-                var filmeDto = _mapper.Map<ReadFilmeDTO>(filme);
-                filmesDto.Add(filmeDto);
-            }
+            var filmesDto = _mapper.Map<List<ReadFilmeDTO>>(filmes);
+        
             return Ok(filmesDto);
         }
 

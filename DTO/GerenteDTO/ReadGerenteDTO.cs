@@ -7,6 +7,6 @@ namespace FilmesApi.DTO.GerenteDTO
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public virtual List<Cinema> Cinemas { get; set; }
+        public virtual object Cinemas { get; set; }
     }
 }
