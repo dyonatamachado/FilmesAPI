@@ -55,7 +55,7 @@ namespace FilmesApi.Controllers
             _context.Add(gerente);
             _context.SaveChanges();
 
-            return NoContent();
+            return CreatedAtAction(nameof(ReadGerenteById), new { Id = gerente.Id}, gerente);
         }
 
         [HttpPut("{id}")]
