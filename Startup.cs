@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FilmesApi.Data;
+using FilmesApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,8 @@ namespace FilmesApi
             
             services.AddDbContext<AppDbContext>(opts => opts.UseLazyLoadingProxies()
                 .UseMySql(dbString, serverVersion));
+
+            services.AddTransient<CartazService, CartazService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
