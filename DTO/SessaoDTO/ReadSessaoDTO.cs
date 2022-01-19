@@ -11,5 +11,7 @@ namespace FilmesApi.DTO.SessaoDTO
         public int FilmeId { get; set; }
         public int CinemaId { get; set; }
         public DateTime HorarioDeEncerramento { get; set; }
+        public DateTime HorarioDeInicio { get; set; }
+                
     }
 }
