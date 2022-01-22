@@ -34,6 +34,7 @@
       "FilmesApi/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "FluentResults": "3.2.0",
           "Microsoft.EntityFrameworkCore.Design": "5.0.13",
           "Microsoft.EntityFrameworkCore.Proxies": "5.0.13",
           "Pomelo.EntityFrameworkCore.MySql": "5.0.3",
@@ -379,6 +380,17 @@
         },
         "compile": {
           "lib/netstandard1.5/Castle.Core.dll": {}
+        }
+      },
+      "FluentResults/3.2.0": {
+        "runtime": {
+          "lib/netstandard2.1/FluentResults.dll": {
+            "assemblyVersion": "3.2.0.0",
+            "fileVersion": "3.2.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentResults.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -3075,6 +3087,13 @@
       "sha512": "sha512-zanbjWC0Y05gbx4eGXkzVycOQqVOFVeCjVsDSyuao9P4mtN1w3WxxTo193NGC7j3o2u3AJRswaoC6hEbnGACnQ==",
       "path": "castle.core/4.4.1",
       "hashPath": "castle.core.4.4.1.nupkg.sha512"
+    },
+    "FluentResults/3.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3m5i/uTOq0uUD4ANakzLYwQNbvEpqpVaJjjT4FhTNxJAYzEw14Jvs1PE8voNWPw7H8pLC9GI1bRozohq1VxeCQ==",
+      "path": "fluentresults/3.2.0",
+      "hashPath": "fluentresults.3.2.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "5xGO4StKZGcR1sN8bl2qAG+sJfTzdBvY9NulbhEL/gQXJ9bNfwjUR3jgfmFa28ljAQK03ZbBEXcacTU9+dZ+eA==",
+  "dgSpecHash": "S4rC0wbeEOIVE/EQoGDGSMo6duY4FZzrCe0ewM+6tIMvGrX10ILS3u2IyXBfHQiUUZfWS6vRSGi9cPiehg/U9Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\colaborador\\Desktop\\Pessoais\\Projetos\\FilmesApi\\FilmesApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\colaborador\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\colaborador\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\colaborador\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
+    "C:\\Users\\colaborador\\.nuget\\packages\\fluentresults\\3.2.0\\fluentresults.3.2.0.nupkg.sha512",
     "C:\\Users\\colaborador\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\colaborador\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\colaborador\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.13\\microsoft.entityframeworkcore.5.0.13.nupkg.sha512",

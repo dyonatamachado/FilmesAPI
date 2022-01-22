@@ -1,17 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 using FilmesApi.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FilmesApi.DTO.FilmeDTO
 {
     public class UpdateFilmeDTO
     {
-        public UpdateFilmeDTO(CartazService cartazService)
-        {
-            _cartazService = cartazService;
-        }
-        private CartazService _cartazService;
-        private string _cartazBase64;
 
         [Required(ErrorMessage = "O campo Título é obrigatório")]
         public string Titulo { get; set; }
@@ -33,17 +28,13 @@ namespace FilmesApi.DTO.FilmeDTO
         [Required(ErrorMessage = "Campo Classificação Etária é obrigatório")]
         public int ClassificacaoEtaria { get; set; }
 
+        private string _cartazBase64;
 
         [Required(ErrorMessage = "O campo CartazBase64 é obrigatório e aceita strings no formato Base64")]
         public string CartazBase64
         {
             get { return _cartazBase64; }
-            set 
-            { 
-                _cartazBase64 = _cartazService.GetBase64StringSemPrefixo(value); 
-            }
+            set { _cartazBase64 = new Regex(@"^data:image\/[a-z]+;base64,").Replace(value, "");}
         }
-        
-
     }
 }

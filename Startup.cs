@@ -32,17 +32,13 @@ namespace FilmesApi
             var dbString = Configuration.GetConnectionString("FilmesDb");
             var serverVersion = new MySqlServerVersion(new Version(5, 7, 36));
             
-            services.AddDbContext<AppDbContext>(opts => opts.UseLazyLoadingProxies()
-                .UseMySql(dbString, serverVersion));
-
-            services.AddTransient<CartazService, CartazService>();
-
+            services.AddDbContext<AppDbContext>(opts => opts.UseLazyLoadingProxies().UseMySql(dbString, serverVersion));
+            services.AddScoped<FilmeService, FilmeService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FilmesApi", Version = "v1" });
             });
-
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 

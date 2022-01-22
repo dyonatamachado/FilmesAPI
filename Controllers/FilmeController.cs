@@ -6,6 +6,7 @@ using FilmesApi.Data;
 using FilmesApi.DTO.FilmeDTO;
 using FilmesApi.Entities;
 using FilmesApi.Services;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmesApi.Controllers
@@ -14,97 +15,72 @@ namespace FilmesApi.Controllers
     [Route("[controller]")]
     public class FilmeController : ControllerBase
     {
-        private AppDbContext _context;
-        private IMapper _mapper;
+        private FilmeService _filmeService;
 
-        public FilmeController(AppDbContext context, IMapper mapper)
+        public FilmeController(FilmeService filmeService)
         {
-            _context = context;
-            _mapper = mapper;
+            _filmeService = filmeService;
         }
 
         [HttpGet]
         public IActionResult ReadFilmes([FromQuery] int? classificacaoEtaria = null)
         {
-            List<Filme> filmes;
+            var filmesDto = _filmeService.ReadFilmes(classificacaoEtaria);
 
-            if(classificacaoEtaria == null)
-            {
-                filmes = _context.Filmes.ToList();
-            }
-            else
-            {
-                filmes = _context.Filmes.
-                    Where(filme => filme.ClassificacaoEtaria <= classificacaoEtaria).ToList();
-            }
-
-            if(filmes == null)
+            if(filmesDto == null)
                 return NoContent();
-            
-            var filmesDto = _mapper.Map<List<ReadFilmeDTO>>(filmes);
-        
+                
             return Ok(filmesDto);
         }
 
         [HttpGet("{id}")]
         public IActionResult ReadFilmeById(int id)
         {
-            var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
+            var filmeDto = _filmeService.ReadFilmeById(id);
 
-            if(filme == null)
+            if(filmeDto == null)
                 return NotFound();
-
-            var filmeDto = _mapper.Map<ReadFilmeDTO>(filme);
+                
             return Ok(filmeDto);
         }
-
+        
         [HttpPost]
-        public IActionResult CreateFilme([FromBody] CreateFilmeDTO filmeDto)
+        public IActionResult CreateFilme([FromBody] CreateFilmeDTO dto)
         {
-            var filme = _mapper.Map<Filme>(filmeDto);
+            var filmeDto = _filmeService.CreateFilme(dto);
 
-            _context.Add(filme);
-            _context.SaveChanges();
-
-            return CreatedAtAction(nameof(ReadFilmeById), new { Id = filme.Id } , filme);
+            return CreatedAtAction(nameof(ReadFilmeById), new { Id = filmeDto.Id } , filmeDto);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateFilme(int id, [FromBody] UpdateFilmeDTO filmeDto)
         {
-            var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
+            var resultado = _filmeService.UpdateFilme(id, filmeDto);
 
-            if(filme == null)
+            if(resultado.IsFailed)
                 return NotFound();
-            
-            _mapper.Map(filmeDto, filme);
-            _context.SaveChanges();
+
             return NoContent();
         }
 
-        [HttpPatch("{id}")] 
+        [HttpPatch("{id}")]
         public IActionResult UpdateCartaz(int id, [FromBody] UpdateCartazDTO cartazDto)
         {
-            var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-
-            if(filme == null)
+            var resultado = _filmeService.UpdateCartaz(id, cartazDto);
+            
+            if(resultado.IsFailed)
                 return NotFound();
 
-            _mapper.Map(cartazDto, filme);
-            _context.SaveChanges();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteFilme(int id)
         {
-            var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
+            var resultado = _filmeService.DeleteFilme(id);
 
-            if(filme == null)
+            if(resultado.IsFailed)
                 return NotFound();
-            
-            _context.Remove(filme);
-            _context.SaveChanges();
 
             return NoContent();
         }

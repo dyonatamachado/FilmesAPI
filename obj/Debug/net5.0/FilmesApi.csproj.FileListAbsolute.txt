@@ -39,3 +39,4 @@ C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Humani
 C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\colaborador\Desktop\Pessoais\Projetos\FilmesApi\bin\Debug\net5.0\FluentResults.dll
