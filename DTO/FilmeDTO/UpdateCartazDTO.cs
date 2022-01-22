@@ -12,11 +12,7 @@ namespace FilmesApi.DTO.FilmeDTO
         public string CartazBase64
         {
             get { return _cartazBase64; }
-            set 
-            { 
-                _cartazBase64 = new Regex(@"^data:image\/[a-z]+;base64,").Replace(value, "");
-            }
+            set { _cartazBase64 = new Regex(@"^data:image\/[a-z]+;base64,").Replace(value, "");}
         }
-        
     }
 }
