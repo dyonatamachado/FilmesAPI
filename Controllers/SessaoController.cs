@@ -56,7 +56,7 @@ namespace FilmesApi.Controllers
             return CreatedAtAction(nameof(ReadSessaoById), new { Id = sessao.Id}, sessao);
         }
 
-        [HttpPatch("{id}")]
+        [HttpPut("{id}")]
         public IActionResult UpdateSessao(int id, [FromBody] UpdateSessaoDTO sessaoDto)
         {
             var sessao = _context.Sessoes.FirstOrDefault(sessao => sessao.Id == id);
