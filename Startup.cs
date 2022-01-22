@@ -36,6 +36,7 @@ namespace FilmesApi
             services.AddScoped<FilmeService, FilmeService>();
             services.AddScoped<CinemaService, CinemaService>();
             services.AddScoped<EnderecoService, EnderecoService>();
+            services.AddScoped<GerenteService, GerenteService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
