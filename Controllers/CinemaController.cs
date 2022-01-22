@@ -14,14 +14,10 @@ namespace FilmesApi.Controllers
     [Route("[controller]")]
     public class CinemaController : ControllerBase
     {
-        private AppDbContext _context;
-        private IMapper _mapper;
         private CinemaService _cinemaService;
-
-        public CinemaController(AppDbContext context, IMapper mapper)
+        public CinemaController(CinemaService cinemaService)
         {
-            _context = context;
-            _mapper = mapper;
+            _cinemaService = cinemaService;
         }
 
         [HttpGet]
